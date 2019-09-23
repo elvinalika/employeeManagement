@@ -41,11 +41,16 @@ class AddEmployee extends Component {
       employee_salary: this.state.employee_salary,
       employee_age: this.state.employee_age
     };
-    this.props.addEmployee(el);
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-    // this.props.fetchEmployees()
+    if (
+      el.employee_age !== "" &&
+      el.employee_name !== "" &&
+      el.employee_salary !== ""
+    ) {
+      this.props.addEmployee(el);
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }));
+    }
   };
 
   render() {

@@ -3,10 +3,8 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -26,32 +24,27 @@ class Header extends Component {
   }
   render() {
     const style = {
-      color: "black"
+      color: "black",
+      margin: "5px"
     };
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
             <Link style={style} to="/">
               Home
             </Link>
-          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>
                   <Link style={style} to="/allEmployees">
                     All employees
                   </Link>
-                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>
                   <Link style={style} to="/deletedEmployees">
                     Deleted employees
                   </Link>
-                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

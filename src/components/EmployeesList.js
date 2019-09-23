@@ -176,7 +176,7 @@ class EmployeesList extends Component {
                     >
                       {this.props.loadingDelete &&
                         this.state.deleteIndex === index && (
-                          <Spinner size="sm" color="danger" />
+                          <Spinner size="sm" color="black" />
                         )}
                       Delete
                     </Button>
