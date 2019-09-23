@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import Header from "./components/Header";
+import routes from "./Routes/routes";
+import { connect } from "react-redux";
+import { getEmployeesRequest } from "./Redux/actions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchEmployees();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header></Header>
+        {routes.map(el => (
+          <Route
+            key={el.path}
+            exact
+            path={el.path}
+            component={el.component}
+          ></Route>
+        ))}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect(
+  null,
+  {
+    fetchEmployees: getEmployeesRequest
+  }
+)(App);
